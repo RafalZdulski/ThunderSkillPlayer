@@ -4,9 +4,6 @@ import com.thunderfinesse.thunderskillfetcher.player.data.Player;
 import com.thunderfinesse.thunderskillfetcher.player.mongodb.AccessPoint;
 import com.thunderfinesse.thunderskillfetcher.player.mongodb.DBWriter;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -42,10 +39,10 @@ public class Main {
                 cmdVals.add(m.group(0).substring(1));
 
             switch (cmdName.toLowerCase()){
-                case "--dbname" -> properties.replace("db.thunderskill", cmdVals.get(0));
-                case "--dburi" -> properties.replace("db.uri", cmdVals.get(0));
-                case "" -> {}
-                default -> throw new IllegalArgumentException("no such option as " + cmdName);
+                case "--dbname" : properties.replace("db.thunderskill", cmdVals.get(0)); break;
+                case "--dburi" : properties.replace("db.uri", cmdVals.get(0)); break;
+                case "" : break;
+                default : throw new IllegalArgumentException("no such option as " + cmdName);
             }
         }
 

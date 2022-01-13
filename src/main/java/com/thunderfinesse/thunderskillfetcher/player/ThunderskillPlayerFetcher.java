@@ -11,7 +11,7 @@ public class ThunderskillPlayerFetcher {
     private String urlVehicles;
     //https://thunderskill.com/en/stat/%login%/vehicles/%mode-short%
 
-    ThunderskillPlayerFetcher(String urlVehicles){
+    public ThunderskillPlayerFetcher(String urlVehicles){
         this.urlVehicles = urlVehicles;
     }
 

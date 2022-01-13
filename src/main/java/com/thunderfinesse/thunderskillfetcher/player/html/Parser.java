@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 public class Parser {
 
 
-    public Vehicle parseVehicle(Element row) {
+    public Vehicle parseVehicle(Element row) throws Exception {
         String id = row.getElementsByAttribute("href").attr("href");
         id = id.substring(id.lastIndexOf("/")+1);
 
@@ -19,7 +19,14 @@ public class Parser {
 
         Elements details = row.getElementsByClass("params").first().children();
 
+
         Element battlesElement = (Element) details.stream().filter(c -> c.toString().contains("Battles")).toArray()[0];
+        int battles = Integer.parseInt(battlesElement.childNode(1).childNode(0).childNode(0).toString());
+
+        if(battles == 0){
+            throw new Exception("zero battles for " + id);
+        }
+
         Element respawnsElement = (Element) details.stream().filter(c -> c.toString().contains("Respawns")).toArray()[0];
         Element victoriesElement = (Element) details.stream().filter(c -> c.toString().contains("Victories")).toArray()[0];
         Element defeatsElement = (Element) details.stream().filter(c -> c.toString().contains("Defeats")).toArray()[0];
@@ -30,7 +37,6 @@ public class Parser {
 //        String name = nameElement.childNode(0).toString().replace("&nbsp;"," ");
 //        Nation nation = Nation.getNation(nationElement.attr("class"));
 //        Rank rank = Rank.getRank(rankElement.childNode(0).toString());
-        int battles = Integer.parseInt(battlesElement.childNode(1).childNode(0).childNode(0).toString());
         int respawns = Integer.parseInt(respawnsElement.childNode(1).childNode(0).childNode(0).toString());
         int victories = Integer.parseInt(victoriesElement.childNode(1).childNode(0).childNode(0).toString());
         int defeats = Integer.parseInt(defeatsElement.childNode(1).childNode(0).childNode(0).toString());

@@ -35,7 +35,9 @@ public class TypeFetcherThread implements Runnable{
         Parser parser = new Parser();
         List<Vehicle> list = new LinkedList<>();
         for (Element row : table) {
-            list.add(parser.parseVehicle(row));
+            try {
+                list.add(parser.parseVehicle(row));
+            } catch (Exception e) {}
         }
 
         switch (mode){

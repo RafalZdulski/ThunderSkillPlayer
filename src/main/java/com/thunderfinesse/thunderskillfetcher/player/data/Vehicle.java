@@ -20,6 +20,7 @@ public class Vehicle {
     private int allKills;
     private double winRatio;
     private double kdRatio;
+    private double ksRatio;
 
     public Vehicle(String id, int battles, int respawns, int deaths, int victories,
                    int defeats, int airKills, int groundKills) {
@@ -36,7 +37,7 @@ public class Vehicle {
         this.allKills = airKills + groundKills;
         this.winRatio = victories/(double) battles;
         this.kdRatio = allKills/(double) deaths;
-
+        this.ksRatio = allKills/(double) respawns;
     }
 
     public String getId() {
@@ -55,6 +56,7 @@ public class Vehicle {
                 Updates.set("groundKills",groundKills),
                 Updates.set("allKills",allKills),
                 Updates.set("winRatio",winRatio),
-                Updates.set("kdRatio",kdRatio));
+                Updates.set("kdRatio",kdRatio),
+                Updates.set("ksRatio",ksRatio));
     }
 }

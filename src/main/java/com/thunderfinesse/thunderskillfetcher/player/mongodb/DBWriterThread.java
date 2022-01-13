@@ -3,7 +3,6 @@ package com.thunderfinesse.thunderskillfetcher.player.mongodb;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
-import com.thunderfinesse.thunderskillfetcher.player.data.Player;
 import com.thunderfinesse.thunderskillfetcher.player.data.Vehicle;
 import org.bson.Document;
 import org.bson.conversions.Bson;

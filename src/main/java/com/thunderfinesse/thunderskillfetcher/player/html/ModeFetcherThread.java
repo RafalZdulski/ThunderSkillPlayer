@@ -12,6 +12,10 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * tables containing statistics on thunderskill.com are divide by mode (arcade, realistic, simulation)
+ * and inside these divide by types of vehicles (aircraft and ground vehicles)
+ */
 public class ModeFetcherThread implements Runnable{
 
     private String thunderskillUrl;
@@ -27,6 +31,10 @@ public class ModeFetcherThread implements Runnable{
     }
 
 
+    /**
+     * fetch tables containing vehicles statistic from {@link <a href="https://thunderskill.com/en/stat/Luigi012/vehicles/a">thunderskil.com</a>}
+     * starts 2 threads for each type of vehicles (aircraft and ground vehicles)
+     */
     @Override
     public void run() {
         CountDownLatch typeLatch = new CountDownLatch(VehicleType.values().length);

@@ -5,6 +5,7 @@ public enum Mode {
     REALISTIC("r"),
     SIMULATION("s");
 
+    /** depends on the mode designation on thunderskill.com */
     String abbrev;
 
     Mode(String abbrev) {

@@ -10,6 +10,7 @@ import org.bson.conversions.Bson;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+/** upsert one given list of vehicle stats into given collection*/
 public class DBWriterThread implements Runnable{
 
     private List<Vehicle> list;

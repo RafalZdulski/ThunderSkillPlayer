@@ -4,10 +4,11 @@ import com.thunderfinesse.thunderskillfetcher.player.data.Player;
 
 import java.util.concurrent.CountDownLatch;
 
+/** upsert all 6 lists of vehicles statistics of given player into database specified in accessPoint */
 public class DBWriter {
 
     private AccessPoint accessPoint;
-    private String collectionNameTemplate; //%login%.%type%_%mode%
+    private String collectionNameTemplate; //%login%_%type%_%mode%
 
     public DBWriter(AccessPoint accessPoint, String collectionNameTemplate){
         this.accessPoint = accessPoint;

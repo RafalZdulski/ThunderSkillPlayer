@@ -6,7 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-
+/** access point to chosen MongoDB database */
 public class AccessPoint {
 
     private MongoClient mongoClient;

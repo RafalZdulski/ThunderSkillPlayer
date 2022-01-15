@@ -6,9 +6,10 @@ import com.thunderfinesse.thunderskillfetcher.player.enums.Rank;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+/** data holder for player statistics for certain vehicle */
 public class Vehicle {
     private String id;
-//    private Nation nation;
+//    private Nation nation; //on thunderskill sometimes those stats might be wrong
 //    private Rank rank;
     private int battles;
     private int respawns;
@@ -44,6 +45,9 @@ public class Vehicle {
         return id;
     }
 
+    /**
+     * @return Bson document of player statistics for certain vehicle
+     */
     public Bson toUpdate() {
         return Updates.combine(
                 Updates.setOnInsert("_id",id),

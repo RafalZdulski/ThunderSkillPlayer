@@ -8,8 +8,13 @@ import org.jsoup.select.Elements;
 
 public class Parser {
 
-
-    public Vehicle parseVehicle(Element row) throws Exception {
+    /**
+     * parse given element into Vehicle.class
+     * @param row org.jsoup.nodes.Element containing row from table with vehicle stats from {@link <a href="https://thunderskill.com/en/stat/Luigi012/vehicles/a">thunderskill tables</a>}
+     * @return stats of given vehicle
+     * @throws IllegalStateException when amount of battles in statistics equals 0 (player did not play certain vehicle in that mode)
+     */
+    public Vehicle parseVehicle(Element row) throws IllegalStateException {
         String id = row.getElementsByAttribute("href").attr("href");
         id = id.substring(id.lastIndexOf("/")+1);
 
@@ -24,7 +29,7 @@ public class Parser {
         int battles = Integer.parseInt(battlesElement.childNode(1).childNode(0).childNode(0).toString());
 
         if(battles == 0){
-            throw new Exception("zero battles for " + id);
+            throw new IllegalStateException("zero battles for " + id);
         }
 
         Element respawnsElement = (Element) details.stream().filter(c -> c.toString().contains("Respawns")).toArray()[0];

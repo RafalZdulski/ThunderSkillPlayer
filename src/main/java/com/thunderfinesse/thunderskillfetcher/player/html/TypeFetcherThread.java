@@ -13,6 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * tables containing statistics on thunderskill.com are divide by mode (arcade, realistic, simulation)
+ * and inside these divide by types of vehicles (aircraft and ground vehicles)
+ */
 public class TypeFetcherThread implements Runnable{
 
     private Elements table;
@@ -30,6 +34,9 @@ public class TypeFetcherThread implements Runnable{
 
     }
 
+    /**
+     * parse vehicles statistics and adds it to Player.list
+     */
     @Override
     public void run() {
         Parser parser = new Parser();
@@ -37,7 +44,9 @@ public class TypeFetcherThread implements Runnable{
         for (Element row : table) {
             try {
                 list.add(parser.parseVehicle(row));
-            } catch (Exception e) {}
+            } catch (IllegalStateException e) {
+                //parsed vehicle had 0 battles - no sense in parsing it
+            }
         }
 
         switch (mode){

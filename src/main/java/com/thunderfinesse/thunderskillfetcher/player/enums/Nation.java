@@ -1,7 +1,5 @@
 package com.thunderfinesse.thunderskillfetcher.player.enums;
 
-import java.util.Locale;
-
 public enum Nation {
     USA,
     Germany,
@@ -14,6 +12,7 @@ public enum Nation {
     Sweden,
     Israel;
 
+    /** function to parse nations names used by thunderskill.com */
     public static Nation getNation(String name){
         for (var nation : values()) {
             if (name.contains(nation.toString().toLowerCase())) //if statement should be written better

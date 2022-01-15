@@ -10,7 +10,25 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * fetches given players stats from {@link <a href="https://thunderskill.com/en">thunderskill</a>}
+ * and inserts it to given MongoDB
+ *
+ * @author Rafal Zdulski
+ * @version 1.0
+ */
+
 public class Main {
+
+    /**
+     *@param args 1st param must be login of a player
+     *            available options
+     *            --dbname (default: tf_thunderskill_players)
+     *            --dburi  (default: localhost:27017)
+     *            --mode   (not implemented yet)
+     *            --type   (not implemented yet)
+     * @throws IllegalArgumentException when no login was given or in case of wrong option
+     */
     public static void main(String[] args) {
         Properties properties = defaultVals();
 
@@ -64,6 +82,11 @@ public class Main {
         dbWriter.update(player);
     }
 
+
+    /**
+     * @return set of default values of program properties
+     * collectionNameTemplate must contain %login% and %type% and %mode% in any order with any delimiter
+     */
     private static Properties defaultVals(){
         Properties p = new Properties();
         p.put("url.thunderskill.player","https://thunderskill.com/en/stat/%login%");

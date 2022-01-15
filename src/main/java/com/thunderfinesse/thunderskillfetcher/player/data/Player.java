@@ -3,6 +3,7 @@ package com.thunderfinesse.thunderskillfetcher.player.data;
 import java.util.LinkedList;
 import java.util.List;
 
+/** data holder for player statistics */
 public class Player {
 
     private final String login;

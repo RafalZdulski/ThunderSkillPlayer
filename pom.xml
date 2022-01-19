@@ -34,6 +34,18 @@
             <version>0.0.20131108.vaadin1</version>
         </dependency>
 
+        <!-- selenium web driver  -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.edge</groupId>
+            <artifactId>msedge-selenium-tools-java</artifactId>
+            <version>[3.141.0,)</version>
+        </dependency>
+
         <!-- mongo drivers -->
         <dependency>
             <groupId>org.mongodb</groupId>

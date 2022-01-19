@@ -1,9 +1,3 @@
-# ignore resources and temp files
-resources/
-.temp/
-node_modules/
-package-lock.json
-
 ### java files ###
 
 # Compiled class file

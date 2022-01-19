@@ -1,6 +1,7 @@
 package com.thunderfinesse.thunderskillfetcher.player;
 
 import com.thunderfinesse.thunderskillfetcher.player.data.Player;
+import com.thunderfinesse.thunderskillfetcher.player.html.UpdateButton;
 import com.thunderfinesse.thunderskillfetcher.player.mongodb.AccessPoint;
 import com.thunderfinesse.thunderskillfetcher.player.mongodb.DBWriter;
 
@@ -25,6 +26,7 @@ public class Main {
      *            available options
      *            --dbname (default: tf_thunderskill_players)
      *            --dburi  (default: localhost:27017)
+     *            --update pushes "updateButton" before fetching data
      *            --mode   (not implemented yet)
      *            --type   (not implemented yet)
      * @throws IllegalArgumentException when no login was given or in case of wrong option
@@ -56,9 +58,13 @@ public class Main {
             while (m.find())
                 cmdVals.add(m.group(0).substring(1));
 
+
             switch (cmdName.toLowerCase()){
                 case "--dbname" : properties.replace("db.thunderskill", cmdVals.get(0)); break;
                 case "--dburi" : properties.replace("db.uri", cmdVals.get(0)); break;
+                case "--update" :
+                    if(new UpdateButton().pushButton(login) == -2);
+                        return; //end program - no reason to continue if it couldn't find nickname on thunderskill
                 case "" : break;
                 default : throw new IllegalArgumentException("no such option as " + cmdName);
             }
